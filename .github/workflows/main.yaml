@@ -1,0 +1,22 @@
+name: Java CI (modern)
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'   # Alternativ: zulu, microsoft, etc.
+          java-version: '17'        # Oder '17', je nach Projektanforderung
+          cache: 'maven'            # Aktiviert Maven-Abhängigkeits-Cache
+      - name: Build & Test
+        run: mvn -B -ntp verify     # Batch-Mode (-B), kein Transfer-Progress (-ntp)
