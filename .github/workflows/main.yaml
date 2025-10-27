@@ -20,3 +20,5 @@ jobs:
           cache: 'maven'            # Aktiviert Maven-Abhängigkeits-Cache
       - name: Build & Test
         run: mvn -B -ntp verify     # Batch-Mode (-B), kein Transfer-Progress (-ntp)
+      - name: Deploy
+        run: mvn -B -ntp deploy     # Batch-Mode (-B), kein Transfer-Progress (-ntp)
