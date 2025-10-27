@@ -32,8 +32,21 @@ Die erstellte Datei kann nun direkt mit Java gestartet werden.<br/>
 Die App kann im Browser unter der URL http://localhost:8080 betrachtet werden.
 
 
-### Inbetriebnahme mit Docker Container
-folgt...
+### Github CI CD
+Schritte: 
+- Projekt als .zip heruntergeladen
+- zip folder extrahiert
+- als git repo initialisiert
+- .github/workflow/main.yaml erstellt
+- Workflow beispiel von https://bbw-it.github.io/324_main_rupe/12_CI-CD_Pipelines/12.3.2_GitHubCIMitDeploy/ und angepasst
+- add remote repo, commit, push
+- workflow wird auf github automatisch ausgeführt, kann im action tab des repositories überprüft werden
+- Dockerfile erstellen und befüllen, um auf GHCR zu deployen
+- main.yaml um deployment step erweitern (mit chatgpt.com erstellt)
+- nach dem pushen überprüfen
+  - ob der workflow korrekt durchgelaufen ist: https://github.com/cxs1mon/DevOps_RefCard01/actions
+  - ob es korrekt deployed wurde: https://github.com/cxs1mon?tab=packages
+
 
 
 
