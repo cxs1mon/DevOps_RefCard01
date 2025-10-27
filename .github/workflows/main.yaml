@@ -17,8 +17,16 @@ jobs:
         with:
           distribution: 'temurin'   # Alternativ: zulu, microsoft, etc.
           java-version: '17'        # Oder '17', je nach Projektanforderung
-          cache: 'maven'            # Aktiviert Maven-Abhängigkeits-Cache
-      - name: Build & Test
-        run: mvn -B -ntp verify     # Batch-Mode (-B), kein Transfer-Progress (-ntp)
-      - name: Deploy
-        run: mvn -B -ntp deploy     # Batch-Mode (-B), kein Transfer-Progress (-ntp)
+      - name: Build with Maven
+        run: mvn -B -ntp clean package
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{github.repository_owner}}/app-refcard-01:latest .
+
+      - name: Push Docker image
+        run: docker push ghcr.io/${{github.repository_owner}}/app-refcard-01:latest
