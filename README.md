@@ -4,8 +4,8 @@ Standalone Spring Boot Application
 
 ---
 title: App Ref. Card 01
-author: Rinaldo Lanza, BBW
-date: 12. Februar 2023
+author: Caroline Simon, BBW
+date: 03. November 2025
 ---
 
 
@@ -46,9 +46,19 @@ Schritte:
 - nach dem pushen überprüfen
   - ob der workflow korrekt durchgelaufen ist: https://github.com/cxs1mon/DevOps_RefCard01/actions
   - ob es korrekt deployed wurde: https://github.com/cxs1mon?tab=packages
+![img_3.png](img_3.png)
 
-
-
-
-
-
+### Dockerhub
+Um das Projekt auf Dockerhub anstatt auf GHCR zu deployen, muss folgendes gemacht werden:
+- 2 Secrets im Github Repository hinterlegen
+  - DOCKERHUB_USERNAME: Username von Dockerhub
+  - DOCKERHUB_TOCKEN: kann man auf Dockerhub unter account settings -> Personal Access Tokens erstellen
+- .github/workflow/dockerhub-deploy.yaml erstellen
+- main.yaml kopieren und anpassen oder komplettes beispiel von https://bbw-it.github.io/324_main_rupe/12_CI-CD_Pipelines/12.3.2_GitHubCIMitDeploy/ übernehmen
+  - Anpassen: Teil nach "Log in to GHCR" mit Dockerhub Beispiel von https://bbw-it.github.io/324_main_rupe/12_CI-CD_Pipelines/12.3.2_GitHubCIMitDeploy/ ab "Log in to Docker Hub" ersetzen
+- commit und push -> workflow wird automatisch ausgeführt und kann im action tab des repositories überprüft werden
+- nach dem pushen überprüfen
+  - ob der workflow korrekt durchgelaufen ist: https://github.com/cxs1mon/DevOps_RefCard01/actions
+  - ob es korrekt deployed wurde: https://hub.docker.com/repository/docker/dedede456/app-refcard-01/general
+![img_2.png](img_2.png)
+![img_1.png](img_1.png)
